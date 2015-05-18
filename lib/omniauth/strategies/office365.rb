@@ -16,7 +16,7 @@ module OmniAuth
 
       def authorize_params
         params = super
-        params[:resource] = 'https://login.windows.net/'
+        params[:resource] = ENV['OFFICE365_RESOURCE']
         params
       end
 
