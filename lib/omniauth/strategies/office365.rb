@@ -3,22 +3,13 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Office365 < OmniAuth::Strategies::OAuth2
+      option :name, :office365
 
       option :client_options, {
         site:          'https://outlook.office365.com/',
         token_url:     'https://login.windows.net/common/oauth2/token',
         authorize_url: 'https://login.windows.net/common/oauth2/authorize'
       }
-
-      def request_phase
-        super
-      end
-
-      def authorize_params
-        params = super
-        params[:resource] = ENV['OFFICE365_RESOURCE']
-        params
-      end
 
       uid { raw_info["MailboxGuid"] }
 
@@ -42,5 +33,3 @@ module OmniAuth
     end
   end
 end
-
-OmniAuth.config.add_camelization 'office365', 'Office365'
