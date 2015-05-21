@@ -24,8 +24,8 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('/ews/odata/me').parsed
-      	names = @raw_info["DisplayName"].split(' ')
+        @raw_info ||= access_token.get('/me').parsed
+      	names = @raw_info["displayName"].split(' ')
  	@raw_info["first_name"] = names.first
 	@raw_info["last_name"] = names[1..-1].join(' ')
 	@raw_info
