@@ -20,7 +20,7 @@ module OmniAuth
         params
       end
 
-      uid { raw_info["MailboxGuid"] }
+      uid { raw_info["objectId"] }
 
       info do
         {
