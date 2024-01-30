@@ -3,6 +3,7 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class Office365 < OmniAuth::Strategies::OAuth2
+      option :name, :office365
 
       option :client_options, {
         site:          'https://outlook.office365.com/',
@@ -36,5 +37,3 @@ module OmniAuth
     end
   end
 end
-
-OmniAuth.config.add_camelization 'office365', 'Office365'
